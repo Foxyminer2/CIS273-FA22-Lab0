@@ -40,17 +40,20 @@ namespace Vector
 
 		public Vector Subtract(Vector v)
 		{
-			return new Vector();
+            Vector result = new Vector(this.X - v.X, this.Y - v.Y);
+
+            return result;
 		}
 
 		public double Dot(Vector v)
 		{
-			return 0.0;
+            return (this.X * v.X + this.Y * v.Y);
 		}
 
 		public double AngleBetween(Vector v)
 		{
-			return 0.0;
+            
+            return Math.Acos((this.X * v.X + this.Y * v.Y)/Math.Sqrt((this.X * this.X + this.Y * this.Y)*(v.X * v.X + v.Y * v.Y)))*(180/Math.PI);
 		}
 
 		public override string ToString()
@@ -66,7 +69,7 @@ namespace Vector
 			return a.Add(b);
 		}
 
-        public static Vector operator -(Vector a, Vector b)
+        public static Vector operator - (Vector a, Vector b)
         {
             return a.Subtract(b);
         }
